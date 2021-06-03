@@ -8,6 +8,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: whispers
+  namespace: tests-whispers
   labels:
     app: whispers
 spec:
@@ -33,6 +34,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: json-whispers
+  namespace: tests-whispers
   labels:
     app: json-whispers
 spec:

@@ -8,6 +8,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: whistlers
+  namespace: tests-whistlers
   labels:
     app: whistlers
 spec:
@@ -33,6 +34,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: json-whistlers
+  namespace: tests-whistlers
   labels:
     app: json-whistlers
 spec:
