@@ -1,9 +1,11 @@
 #!/bin/bash
 
+#set -x
+
 NAMESPACE=${KUBERNETES_NAMESPACE:-default}
 TZ=${TIMEZONE:-UTC}
 FLOOD_DELAY=${DELAY:-10}
-FLOOD_RANDOM=${RANDOM:-5}
+FLOOD_RANDOM=${RND:-5}
 TYPE=${LOG_TYPE:-plain}
 MESSAGE=${LOG_STRING}
 
@@ -37,7 +39,9 @@ function print_plain(){
 
 
 while true; do
-  sleep $(( $RANDOM % $FLOOD_DELAY + 1 ))
+  if [ ! x$FLOOD_RANDOM == x0 ]; then
+    sleep $(( $RANDOM % $FLOOD_RANDOM + 1 ))
+  fi
   case $TYPE in
     plain)
       print_plain
