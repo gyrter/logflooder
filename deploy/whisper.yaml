@@ -24,6 +24,7 @@ spec:
       containers:
       - name: flooder
         image: gyrt/logflooder
+        imagePullPolicy: Always
         env:
         - name: RND
           value: "10"
@@ -50,6 +51,7 @@ spec:
       containers:
       - name: flooder
         image: gyrt/logflooder
+        imagePullPolicy: Always
         env:
         - name: RND
           value: "10"
