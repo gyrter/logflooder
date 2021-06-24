@@ -8,6 +8,7 @@ FLOOD_DELAY=${DELAY:-10}
 FLOOD_RANDOM=${RND:-5}
 TYPE=${LOG_TYPE:-plain}
 MESSAGE=${LOG_STRING}
+USE_DECOR=${DECORATE:-1}
 
 export LC_ALL=C
 export TZ=$TZ
@@ -30,11 +31,15 @@ function message(){
 }
 
 function print_json(){
-  echo "{\"time\": $(date +%s), \"msg\": \"$(message)\", \"host\": \"${HOSTNAME}\", \"namespace\": \"${NAMESPACE}\"}"
+    echo "{\"time\": $(date +%s), \"msg\": \"$(message)\", \"host\": \"${HOSTNAME}\", \"namespace\": \"${NAMESPACE}\"}"
 }
 
 function print_plain(){
-  echo "$(date) generate '$(message)' for host ${HOSTNAME} in NS ${NAMESPACE}"
+  if [ x${USE_DECOR} = x1 ]; then
+    printf "$(date) generate '$(message)' for host ${HOSTNAME} in NS ${NAMESPACE}"
+  else
+    printf "$(message)"
+  fi
 }
 
 
