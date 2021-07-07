@@ -36,9 +36,9 @@ function print_json(){
 
 function print_plain(){
   if [ x${USE_DECOR} = x1 ]; then
-    printf "$(date) generate '$(message)' for host ${HOSTNAME} in NS ${NAMESPACE}"
+    printf "$(date) generate '$(message)' for host ${HOSTNAME} in NS ${NAMESPACE}\n"
   else
-    printf "$(message)"
+    printf "$(message)\n"
   fi
 }
 
