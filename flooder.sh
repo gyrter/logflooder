@@ -14,7 +14,7 @@ export LC_ALL=C
 export TZ=$TZ
 
 case $TYPE in
-  plain|json)
+  plain|json|python)
     ;;
   *)
     echo "Wrong log type"
@@ -23,7 +23,7 @@ case $TYPE in
 esac
 
 function message(){
-  if [ -z $MESSAGE ]; then
+  if [ -z "$MESSAGE" ]; then
     echo $(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
   else
     echo $MESSAGE
@@ -53,6 +53,9 @@ while true; do
       ;;
     json)
       print_json
+      ;;
+    python)
+      python /usr/local/bin/flooder.py
       ;;
   esac
   sleep $FLOOD_DELAY

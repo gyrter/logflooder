@@ -68,3 +68,36 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-whispers
+  namespace: tests-whispers
+  labels:
+    app: python-whispers
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: python-whispers
+  template:
+    metadata:
+      labels:
+        app: python-whispers
+    spec:
+      containers:
+      - name: flooder
+        image: gyrt/logflooder
+        imagePullPolicy: Always
+        env:
+        - name: RND
+          value: "10"
+        - name: DELAY
+          value: "15"
+        - name: LOG_TYPE
+          value: python
+        - name: KUBERNETES_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+---
