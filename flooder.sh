@@ -55,7 +55,7 @@ while true; do
       print_json
       ;;
     python)
-      python /usr/local/bin/flooder.py
+      python3 /usr/local/bin/flooder.py
       ;;
   esac
   sleep $FLOOD_DELAY
