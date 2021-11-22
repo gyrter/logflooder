@@ -38,7 +38,13 @@ def test0():
     logging.info("Hello")
 
 def test1(a, b):
-    logging.info("Some math result " + str(a/b))
+    test1_(a, b)
+
+def test1_(a, b):
+    test1__(a, b)
+
+def test1__(a, b):
+    logging.info("Some math result %i", a/b)
 
 def main(args):
     while True:
