@@ -28,8 +28,8 @@ import logging
 from os import getenv
 from random import randint
 
-RND=getenv("RND", 5)
-DELAY=getenv("DELAY", 10)
+RND=int(getenv("RND", 5))
+DELAY=int(getenv("DELAY", 10))
 NAMESPACE=getenv("KUBERNETES_NAMESPACE", "default")
 
 logging.basicConfig(format="%(asctime)s {} %(message)s".format(NAMESPACE), datefmt='%m %b %Y %H:%M:%S', level=logging.DEBUG)
